@@ -14,7 +14,7 @@ document.getElementById("kgInput").addEventListener("input", function (kg) {
 document.getElementById("km_output").style.visibility = "hidden";
 document.getElementById("kmInput").addEventListener("input", function (km) {
   document.getElementById("km_output").style.visibility = "visible";
-  let num = km.target.value;
+  num = km.target.value;
   document.getElementById("milesOutput").innerHTML = num * 0.621371;
   document.getElementById("feetOutput").innerHTML = num * 3280.84;
   document.getElementById("inchOutput").innerHTML = num * 39370.1;
@@ -24,8 +24,8 @@ document.getElementById("kmInput").addEventListener("input", function (km) {
 document.getElementById("lt_output").style.visibility = "hidden";
 document.getElementById("ltInput").addEventListener("input", function (lt) {
   document.getElementById("lt_output").style.visibility = "visible";
-  let num = lt.target.value;
-  document.getElementById("gallonOutput").innerHTML = num * 0.264172;
+  num = lt.target.value;
+  document.getElementById("gallonOutput").innerHTML = num * 0.219969;
   document.getElementById("quartOutput").innerHTML = num * 1.05669;
   document.getElementById("pintOutput").innerHTML = num * 2.11338;
   document.getElementById("cupsOutput").innerHTML = num * 4.16667;
