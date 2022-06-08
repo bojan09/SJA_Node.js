@@ -1,5 +1,3 @@
-/*
-
 console.log("test"); // string
 console.log(1234); // number
 console.log(true); // boolean
@@ -47,5 +45,21 @@ let stu = student;
 
 stu.grade = 7;
 console.log(student);
-*/
 
+// Solution from teacher
+
+const tempConvert = (type, value) => {
+  switch (type) {
+    case "c2f":
+      return (value * 9) / 5 + 32;
+    case "f2c":
+      return (value * 5) / 9 - 32;
+    default:
+      console.log("Cannot Convert");
+      break;
+  }
+};
+
+let celsius = 100;
+let fahrenheit = tempConvert("f2c", celsius);
+console.log("Convert result", fahrenheit);

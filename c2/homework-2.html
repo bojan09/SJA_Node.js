@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        margin-top: 70px;
+        background: #333;
+        color: #fff;
+    }
+
+    .container {
+        display: grid;
+        place-items: center;
+    }
+
+    h1 {
+        font-family: 'Times New Roman', sans-serif;
+        font-weight: 700;
+        font-size: 40px;
+        text-transform: uppercase;
+    }
+
+    h2 {
+        font-weight: 600;
+        font-size: 35px;
+        text-transform: uppercase;
+    }
+
+    .kg {
+        color: firebrick;
+    }
+
+    .km {
+        color: yellow;
+    }
+
+    .lt {
+        color: skyblue;
+    }
+
+    h4 {
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    input {
+        width: 30em;
+        padding: 20px;
+        margin-bottom: 20px;
+        background-color: antiquewhite;
+    }
+
+    .card {
+        font-size: 20px;
+        padding: 15px;
+        width: 30em;
+        margin-bottom: 10px;
+        color: #fff;
+    }
+
+    .card-block {
+        display: flex;
+        align-items: center;
+    }
+
+    .card-blue {
+        background-color: blue;
+    }
+
+    .card-green {
+        background-color: green;
+    }
+
+    .card-purple {
+        background-color: purple;
+    }
+
+    .card-red {
+        background-color: red;
+    }
+
+    .card-violet {
+        background-color: violet;
+    }
+
+    .card-orange {
+        background-color: orange;
+    }
+
+    .card-turquoise {
+        background-color: turquoise;
+    }
+
+    .card-yellowgreen {
+        background-color: yellowgreen;
+    }
+
+    .card-teal {
+        background-color: teal;
+    }
+
+    .card-cornflowerblue {
+        background-color: cornflowerblue;
+    }
+</style>
+
+<body>
+    <!--! KILOGRAMS -->
+    <div class="container">
+        <h1>Enter a number value to convert the following</h1>
+        <h2 class="kg">Kilograms to</h2>
+        <form>
+            <input id="kgInput" type="number" placeholder="Enter number to convert...">
+        </form>
+        <div id="kg_output">
+
+            <div class="card card-blue ">
+                <!-- Kilogram to Grams -->
+                <div class="card-block">
+                    <h4>Grams: </h4>
+                    <div id="gramsOutput"></div>
+                </div>
+            </div>
+
+            <div class="card card-purple ">
+                <!-- Kilogram to Ton -->
+                <div class="card-block">
+                    <h4>Tons: </h4>
+                    <div id="tonOutput"></div>
+                </div>
+            </div>
+
+            <div class="card card-green ">
+                <!-- Kilogram to Ounces -->
+                <div class="card-block">
+                    <h4>Ounces: </h4>
+                    <div id="ozOutput"></div>
+                </div>
+            </div>
+
+            <div class="card card-violet ">
+                <!-- Kilogram to Stone -->
+                <div class="card-block">
+                    <h4>Stones: </h4>
+                    <div id="stOutput"></div>
+                </div>
+            </div>
+
+            <div class="card card-red ">
+                <!-- Kilogram to Pounds -->
+                <div class="card-block">
+                    <h4>Pounds: </h4>
+                    <div id="lbsOutput"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--! KILOMETERS  -->
+    <div class="container">
+        <h2 class="km">Kilometers to</h2>
+        <form>
+            <input id="kmInput" type="number" placeholder="Enter number to convert...">
+        </form>
+        <div id="km_output">
+
+            <div class="card card-orange ">
+                <!-- Kilometer to Miles -->
+                <div class="card-block">
+                    <h4>Miles: </h4>
+                    <div id="milesOutput"></div>
+                </div>
+            </div>
+
+            <div class="card card-turquoise ">
+                <!-- Kilometer to Feet -->
+                <div class="card-block">
+                    <h4>Feet: </h4>
+                    <div id="feetOutput"></div>
+                </div>
+            </div>
+
+            <div class="card card-teal ">
+                <!-- Kilometer to Inches -->
+                <div class="card-block">
+                    <h4>Inches: </h4>
+                    <div id="inchOutput"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--! LITERS  -->
+    <div class="container">
+        <h2 class="lt">Liters to</h2>
+        <form>
+            <input id="ltInput" type="number" placeholder="Enter number to convert...">
+        </form>
+        <div id="lt_output">
+
+            <div class="card card-red ">
+                <!-- Liter to Gallon -->
+                <div class="card-block">
+                    <h4>Gallon: </h4>
+                    <div id="gallonOutput"></div>
+                </div>
+            </div>
+
+            <div class="card card-yellowgreen ">
+                <!-- Liter to Quart -->
+                <div class="card-block">
+                    <h4>Quart: </h4>
+                    <div id="quartOutput"></div>
+                </div>
+            </div>
+
+            <div class="card card-violet ">
+                <!-- Liter to Pint -->
+                <div class="card-block">
+                    <h4>Pint: </h4>
+                    <div id="pintOutput"></div>
+                </div>
+            </div>
+
+            <div class="card card-cornflowerblue ">
+                <!-- Liter to Cups -->
+                <div class="card-block">
+                    <h4>Cups: </h4>
+                    <div id="cupsOutput"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+<script src="./homework-2.js"></script>
+
+</html>
