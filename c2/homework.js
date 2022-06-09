@@ -30,7 +30,7 @@ const jsConverter = (type, value) => {
       return value * 1.05669;
     case "lt2pint": //Liter to Pint
       return value * 2.11338;
-    case "lt2cup": //Liter to Pint
+    case "lt2cup": //Liter to Cup
       return value * 4.16667;
     default:
       console.log("Cannot Convert");
@@ -38,7 +38,7 @@ const jsConverter = (type, value) => {
   }
 };
 // Value
-let num = 1;
+let num = 121;
 // Kilograms
 let kg2gram = jsConverter("kg2gram", num);
 let kg2lbs = jsConverter("kg2lbs", num);
