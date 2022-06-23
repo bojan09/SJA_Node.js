@@ -26,26 +26,30 @@ fs.rename("file.txt", "hello.txt", (err) => {
   }
 });
 
-fs.rename("hello.txt", "file.txt", (err) => {
-  if (err) {
-    console.log("There seems to be an error", err);
-  }
-});
+// fs.rename("hello.txt", "file.txt", (err) => {
+//   if (err) {
+//     console.log("There seems to be an error", err);
+//   }
+// });
 
 // Copy a file
 
-fs.copyFile("colors.txt", "copiedFile.txt", (err) => {
-  if (err) {
-    console.log("There seems to be an error", err);
-  }
-  console.log("color.txt was copied to copiedFile.txt");
-});
+(async () => {
+  fs.copyFile("colors.txt", "copiedFile.txt", (err) => {
+    if (err) {
+      console.log("There seems to be an error", err);
+    }
+    console.log("color.txt was copied to copiedFile.txt");
+  });
+})();
 
 // Delete / Remove a file
 const path = "./file.txt";
 
-try {
-  fs.unlinkSync(path);
-} catch (err) {
-  console.error(err);
-}
+(async () => {
+  try {
+    fs.unlinkSync(path);
+  } catch (err) {
+    console.error(err);
+  }
+})();
