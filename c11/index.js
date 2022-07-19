@@ -5,7 +5,6 @@ const mongoose = require("mongoose");
 
 // after the mongoose.mongodb.net/ here we put the database name ?retryWrites
 const connectionString =
-  "mongodb+srv://bojan::::pasw::::@cluster0.nizjdq4.mongodb.net/new-database?retryWrites=true&w=majority";
 
 const connect = () => {
   return new Promise((success, fail) => {
