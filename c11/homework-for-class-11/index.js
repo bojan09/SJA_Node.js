@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 
 // after the mongoose.mongodb.net/ here we put the database name ?retryWrites
 const connectionString =
-  "mongodb+srv://bojan:September1997@cluster0.nizjdq4.mongodb.net/new-database?retryWrites=true&w=majority";
+
 
 const connect = () => {
   return new Promise((success, fail) => {
@@ -26,56 +26,116 @@ const Students = mongoose.model(
     name: String,
     lastname: String,
     rating: Number,
+    location: {
+      city: String,
+      state: String,
+    },
   },
   "students" //collection name
 );
 
-// reading smh from the students collection
 connect(connectionString)
   .then((res) => {
-    return Students.find({});
+    //! Топ 5 студенти според просек
+    return Students.find(
+      { rating: { $gte: 9 } },
+      { name: 1, lastname: 1, rating: 1 }
+    )
+      .limit(5)
+      .sort({ rating: -1 });
   })
   .then((res) => {
-    console.log(res);
-    let s = new Students({
-      name: "Brian",
-      lastname: "Cranston",
-      rating: "8.4",
-    });
-    //! saves the new user from above
-    // return s.save();
-    console.log("Saved!");
-  })
-  .then((res) => {
-    //! updating a id from our database
-    return Students.updateOne(
-      { _id: "62d6eedf7f563e399575fc46" },
-      { lastname: "Peterson" }
-    );
-  })
-  .then((res) => {
-    console.log("User has been updated!", res);
-    //! delete the following user
-    return Students.deleteOne({ _id: "62d708c5b76c1ba935ea3364" });
+    console.log("Toп 5 студенти според просек", res);
   })
 
-  //   selection of data
+  //! Најлоши 3 студенти од Скопје
   .then((res) => {
-    console.log("Deleted Record");
-    //! find/filter the following user
-    return Students.find({ name: "Aaron" }, { lastname: 1 });
+    return Students.find(
+      { rating: { $lte: 5 } },
+      { "location.city": "Skopje", name: 1, lastname: 1, rating: 1 }
+    )
+      .limit(3)
+      .sort({ rating: 1 });
+  })
+  .then((res) => {
+    console.log("Најлоши 3 студенти од Скопје", res);
   })
 
+  //! Најдобри 10 студенти од Скопје
   .then((res) => {
-    console.log("Filtered results", res);
-    // show me who has grater than 9 rating, and display only the last names and the rating
-    return Students.find({ rating: { $gte: 5 } }, { lastname: 1, rating: 1 })
+    return Students.find(
+      { rating: { $gte: 5 }, "location.city": "Skopje" },
+      { name: 1, lastname: 1, rating: 1, "location.city": "Skopje" }
+    ).sort({ rating: -1 });
+  })
+  .then((res) => {
+    console.log("Најдобри 10 студенти од Скопје", res);
+  })
+
+  //! Најдобри 3 студенти од Македонија.
+  .then((res) => {
+    return Students.find(
+      { rating: { $gt: 9 } },
+      { location: "Macedonia", name: 1, lastname: 1, rating: 1 }
+    )
       .limit(3)
       .sort({ rating: -1 });
   })
-
   .then((res) => {
-    console.log("Filtered results 2", res);
+    console.log("Најдобри 3 студенти од Македонија", res);
+  })
+
+  //! Најлоши 5 студенти од Битола
+  .then((res) => {
+    return Students.find(
+      {
+        rating: { $gt: 1 },
+        "location.city": "Bitola",
+      },
+      { lastname: 1, rating: 1, "location.city": "Bitola" }
+    ).sort({ rating: 1 });
+  })
+  .then((res) => {
+    console.log("Најлоши 5 студенти од Битола", res);
+  })
+
+  //! Приказ на студенти од Битола подредени по презиме
+  .then((res) => {
+    return Students.find(
+      { "location.city": "Bitola" },
+      { lastname: 1, rating: 1, "location.city": "Bitola" }
+    ).sort({
+      lastname: 1,
+    });
+  })
+  .then((res) => {
+    console.log("Приказ на студенти од Битола подредени по презиме", res);
+  })
+
+  //! Приказ на студенти од Куманово подредени по име
+  .then((res) => {
+    return Students.find(
+      { "location.city": "Kumanovo" },
+      { name: 1, rating: 1, "location.city": "Kumanovo" }
+    ).sort({
+      name: 1,
+    });
+  })
+  .then((res) => {
+    console.log("Приказ на студенти од Куманово подредени по име", res);
+  })
+
+  //! Приказ на најдобриот студент од Македонија
+  .then((res) => {
+    return Students.find(
+      { rating: { $gt: 9.5 } },
+      { location: "Macedonia", name: 1, lastname: 1, rating: 1 }
+    )
+      .limit(1)
+      .sort({ rating: -1 });
+  })
+  .then((res) => {
+    console.log("Приказ на најдобриот студент од Македонија", res);
   })
   .catch((err) => {
     console.log(err);
